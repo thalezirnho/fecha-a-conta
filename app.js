@@ -107,7 +107,7 @@ function renderAdvanceForm() {
     row.className = 'advance-alloc-row';
     row.innerHTML = `
       <span class="alloc-name">${esc(item.name)} (R$ ${fmt(item.price * item.qty)})</span>
-      <input type="number" class="alloc-input" data-index="${i}" min="0" step="0.01" placeholder="0,00" value="0">
+      <input type="number" class="alloc-input" data-index="${i}" min="0" step="0.01" placeholder="0,00">
     `;
     advanceAllocGrid.appendChild(row);
   });
@@ -142,7 +142,7 @@ advanceForm.addEventListener('submit', (e) => {
   saveJSON(STORAGE_KEY + '-advance', advancePayments);
   renderAdvanceList();
   advanceForm.reset();
-  advanceAllocGrid.querySelectorAll('.alloc-input').forEach((input) => { input.value = '0'; });
+  advanceAllocGrid.querySelectorAll('.alloc-input').forEach((input) => { input.value = ''; });
   updateAdvanceSum();
 });
 
